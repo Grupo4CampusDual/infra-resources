@@ -16,3 +16,6 @@ jobs:
 
       - name: Run Validation
         run: echo "Validating code..."
+
+      - name: Check for README.md
+        run: test -f README.md || echo "README.md is missing"
