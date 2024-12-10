@@ -7,7 +7,7 @@ on:
       - develop
 
 jobs:
-  install-aws-cli:
+  upload-to-s3:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,3 +21,17 @@ jobs:
 
       - name: Verify AWS CLI
         run: aws --version
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-3
+
+      - name: Set S3 Bucket Location
+        run: echo "S3_BUCKET=s3://proyect-1-stb-devops-bucket" >> $GITHUB_ENV
+
+      - name: Upload File to S3
+        run: |
+          aws s3 cp ./docs/example.txt ${{ env.S3_BUCKET }}/example.txt
