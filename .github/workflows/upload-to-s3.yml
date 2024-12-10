@@ -33,6 +33,12 @@ jobs:
       - name: Set S3 Bucket Location
         run: echo "S3_BUCKET=s3://proyect-1-stb-devops-bucket" >> $GITHUB_ENV
 
-      - name: Upload File to S3
+      - name: Check for changes in docs folder
+        id: changes
         run: |
-          aws s3 cp ./docs/example.txt ${{ env.S3_BUCKET }}/example2.txt
+          git diff --exit-code ./docs || echo "Changes detected in docs folder"
+
+      - name: Upload Changes to S3
+        if: steps.changes.outputs.stdout != ''
+        run: |
+          aws s3 sync ./docs ${{ env.S3_BUCKET }}/docs --exact-timestamps
