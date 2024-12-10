@@ -27,7 +27,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-3
+          aws-region: uu-west-3
 
       - name: Set S3 Bucket Location
         run: echo "S3_BUCKET=s3://proyect-1-stb-devops-bucket" >> $GITHUB_ENV
