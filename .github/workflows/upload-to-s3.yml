@@ -31,8 +31,8 @@ jobs:
           aws-region: eu-west-3
 
       - name: Set S3 Bucket Location
-        run: echo "S3_BUCKET=s3://proyect-1-stb-devops-bucket/" >> $GITHUB_ENV
+        run: echo "S3_BUCKET=s3://proyect-1-stb-devops-bucket" >> $GITHUB_ENV
 
       - name: Upload File to S3
         run: |
-          aws s3 cp ./docs/example.txt ${{ env.S3_BUCKET }}/example.txt
+          aws s3 cp ./docs/example.txt ${{ env.S3_BUCKET }}/example2.txt
