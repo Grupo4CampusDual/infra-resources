@@ -25,9 +25,9 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v3
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID_SALVA }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_SALVA }}
+          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN_SALVA }}
           aws-region: eu-west-3
 
       - name: Set S3 Bucket Location
